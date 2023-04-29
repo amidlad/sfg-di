@@ -3,10 +3,7 @@ package sfg.spring5framework.sfgdi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import sfg.spring5framework.sfgdi.controller.ConstructorInjectedController;
-import sfg.spring5framework.sfgdi.controller.MyController;
-import sfg.spring5framework.sfgdi.controller.PropertyInjectController;
-import sfg.spring5framework.sfgdi.controller.SetterInjectedController;
+import sfg.spring5framework.sfgdi.controller.*;
 
 @SpringBootApplication
 public class SfgDiApplication {
@@ -14,6 +11,11 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 
 		ApplicationContext ct = SpringApplication.run(SfgDiApplication.class, args);
+
+		I18NController i18NController = (I18NController) ct.getBean("i18NController");
+		System.out.println("----- Spring Profile Bean -----");
+		System.out.println(i18NController.sayHello());
+
 		MyController myController = (MyController) ct.getBean("myController");
 
 		//String greeting = myController.sayHello();
